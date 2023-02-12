@@ -1,0 +1,357 @@
+/* Desktop */
+
+body{
+  background:#fff;
+  font-family: "Times New Roman", Times, serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+header{
+  height:130px;
+  width:100%;
+  background:#fff;
+  position:fixed;
+  top:0px;
+  left:0px;
+  z-index: 200;
+}
+
+header #header-logo1{
+  height:90px;
+  position:absolute;
+  top:20px;
+  left:150px;
+}
+
+header #header-logo2{
+  height:90px;
+  width:400px;
+  position:absolute;
+  left:270px;
+  top:10px;
+}
+
+
+nav{
+  background:rgb(32,44,70);
+  height:70px;
+  width:100%;
+  position:fixed;
+  top:130px;
+  left:0%;
+  z-index: 200;
+  box-shadow:1px 1px 1px 1px #fff;
+}
+
+#options{
+  display:block;
+}
+
+nav #setting{
+  display:none;
+}
+
+nav ul li{
+  color:white;
+  text-decoration:none;
+  display:inline-block;
+  font-size:20px;
+  background:rgba(32,44,170,0.8);
+  width:120px;
+  text-align: center;
+  height:48px;
+  position:relative;
+  top:-16px;
+  padding-top:22px;
+}
+
+nav ul li:hover{
+  background:rgb(32,44,70);
+  box-shadow: 1px 1px 1px 1px #fff;
+}
+
+#fillPlace{
+  height:200px;
+  position:absolute;
+  top:0px;
+  width:100%;
+}
+
+aside{
+  position:absolute;
+  top:200px;
+  left:0px;
+  height:400px;
+  width:100%;
+  background-image:url("img/1.jpg");
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow:hidden;
+}
+
+aside #shutter-info{
+  height:150px;
+  width:50%;
+  position:absolute;
+  top:70px;
+  left:20%;
+}
+
+aside #shutter-info #shutter-info-txt{
+  font-size:40px;
+  font-weight:bolder;
+  color:#fff;
+  text-shadow:-1px 1px 0 #000, 1px 1px 0 #000;
+  text-transform: uppercase;
+}
+
+#shutter-info-explore{
+  background:rgba(0,0,0,0);
+  border:1px solid #000;
+  color:#fff;
+  height:38px;
+  text-align:center;
+  font-size:22px;
+  padding-top:5px;
+  font-weight:bold;
+  width:120px;
+  box-shadow:2px 2px 0px 3px #fff;
+  position:absolute;
+  bottom:6px;
+}
+
+
+/* Animation area */
+
+.shutter-container{
+  height:2400px;
+  width:200%;
+  position:absolute;
+  top:-1000px;
+  left:-50%;
+  display:grid;
+  z-index:6;
+  background:rgba(0,0,0,0);
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 150vw;
+  transition: 0.8s;
+}
+
+.shutterAnim{
+  grid-gap:0vw;
+  animation-name: rotateShutter;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-duration: 0.8s;
+}
+
+@keyframes rotateShutter{
+  0%{
+    background:rgba(0,0,0,0);
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(180deg);
+  }
+  100%{
+    background:rgba(32,44,70,1);
+    transform: rotate(360deg);
+  }
+}
+
+.shutter{
+  background-color:rgb(0,162,232);
+}
+
+
+
+/* Animation area end */
+
+
+
+article{
+  position:absolute;
+  top:600px;
+  left:0px;
+  width:100%;
+  height:1100px;
+  background: rgb(32,44,70);
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position: center;
+  overflow:hidden;
+  z-index:9;
+}
+
+/* Background animation*/
+
+
+.lights{
+  height:5px;
+  width:5px;
+  background: rgba(140,243,255,0.6);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 5px rgba(140,243,255,0.6);
+  position:absolute;
+  top:250px;
+  left:250px;
+  animation-name: blinkShrink;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blinkShrink{
+  0%{
+    transform: scale(0.1);
+  }
+  50%{
+    transform: scale(1.2);
+  }
+  70%{
+    transform: scale(0.2);
+  }
+  100%{
+    transform: scale(0.1);
+  }
+}
+
+
+/* Background animation end */
+
+article #login{
+  height:500px;
+  width:400px;
+  background: rgba(32,44,170,0.5);
+  position:absolute;
+  top:250px;
+  left:50px;
+  border-radius: 20px;
+  border:1px solid #fff;
+}
+
+#login:hover{
+  animation-name:enlarge;
+  animation-duration: 1s;
+  transform:scale(1.5, 1.5);
+}
+
+@keyframes enlarge{
+  0%{
+    transform:scale(1.0, 1.0);
+  }
+  100%{
+    transform: scale(1.5, 1.5);
+  }
+}
+
+article #login form input{
+
+  height:40px;
+  width:300px;
+  margin-top:50px;
+  margin-left:50px;
+  display:block;
+  text-align:center;
+}
+
+#submit:hover{
+  background:red;
+}
+
+
+footer{
+  background: #fff;
+  min-height:870px;
+  width:100%;
+  position:absolute;
+  top:1700px;
+  left:0%;
+}
+
+footer .footerSection{
+  background:#000;
+  min-height:120px;
+  width:100%;
+  color:#fff;
+  padding:30px;
+}
+
+footer .footerSection h3{
+  color:#fff;
+}
+
+footer .footerSection hr{
+  border: 1px solid green;
+  border-radius: 1px;
+}
+
+footer .footerSection p{
+  color:grey;
+  font-size:20px;
+}
+
+footer .actualFooter{
+  background:rgb(32,32,32);
+  height:80px;
+  width:100%;
+  position:absolute;
+  bottom:0px;
+  color:grey;
+  font-size:18px;
+  padding:30px;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 768px){ /* Phone and Tablet */
+
+   header{
+     height:250px;
+   }
+
+   nav{
+     top:250px;
+     height:50px;
+     position:fixed;
+   }
+
+   nav #setting{
+     display:block;
+     position:absolute;
+     top:10px;
+     right:16px;
+   }
+
+   nav ul{
+     height:280px;
+     width:160px;
+     position:absolute;
+     top:-16px;
+     right:80px;
+     display:none;
+   }
+
+   nav ul li{
+     display:block;
+     font-size:20px;
+     width:200px;
+     text-align: center;
+     height:48px;
+     position:relative;
+     top:0px;
+     left:-38px;
+     padding-top:22px;
+   }
+
+   aside{
+     position:absolute;
+     top:300px;
+     overflow:hidden;
+   }
+
+
+}

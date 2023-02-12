@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Registration Alumni Prtal</title>
+    <style>
+      body{
+        background:#000;
+      }
+      page{
+        position:absolute;
+        background: white;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+      }
+      page[size="A4"] {
+        width: 21cm;
+        height: 29.7cm;
+      }
+
+      #mainHead{
+        height:110px;
+        width:100%;
+        position:absolute;
+        top:0px;
+        left:0px;
+        text-align: center;
+        font-size:20px;
+        font-weight: bold;
+        padding-top:47px;
+      }
+
+      h4{
+        position:absolute;
+        left:6%;
+      }
+    </style>
+  </head>
+  <body id="main">
+
+    <button onclick="pdfNow()">Print</button>
+
+    <page size="A4" id="myform">
+      <div id="mainHead">
+        <img src="img/logo.png" height=100 style="position:absolute;top:40px;left:40px;" />
+        NATIONAL INSTITUTE OF TECHNOLOGY<br/>ARUNACHAL PRADESH, JOTE, PIN-791113<br/>(Established by MHRD, Govt. of India)
+        <img src="img/user.png" onclick="makeImgFocus()" id="user" height=100 width=100 style="position:absolute;top:40px;right:40px;border:1px solid #000;" />
+        <input type="file" id="userFileInput" accept="image/png, image/jpeg" onchange="assignImage(event)" style="display:none;position:absolute;top:40px;right:40px;width:1px;" />
+      </div>
+
+      <div style="position:absolute;top:160px;width:100%;font-weight:bold;text-align:center;">APPLICATION FORM FOR ALUMNI PORTAL MEMBERSHIP OF NIT, AP</div>
+
+      <hr style="width:90%;border:2px solid #000;position:absolute;left:5%;top:190px;" />
+
+      <h4 style="top:192px;">PERSONAL DETAILS</h4>
+    </page>
+
+  </body>
+  <script>
+
+     function pdfNow(){
+       window.print();
+     }
+
+     function makeImgFocus(){
+       document.getElementById("userFileInput").click();
+     }
+
+     function assignImage(file){
+       var img = file.target;
+       var reader = new FileReader();
+
+       reader.onload = function(){
+         var dataurl = reader.result;
+         var output = document.getElementById("user");
+         output.src = dataurl;
+       }
+
+       reader.readAsDataURL(img.files[0]);
+     }
+
+  </script>
+</html>
