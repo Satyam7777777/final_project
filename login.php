@@ -1,27 +1,33 @@
 <?php
+	
+	if( session_status() !== PHP_SESSION_ACTIVE ){
+		session_start();
+	}
+	
 
-    require_once 'connection.php';
-	
-	
+    require_once __DIR__ . 'user/connection.php';
+	require_once __DIR__ . 'authenticateUser.php';
+
+
 	final class GetUserCred extends DBConnection {
-		
+
 		private $credTable;
-		
+
 		public function __construct(){
 
 			parent::__construct();
 			$this->credTable = userCred;
 		}
-		
-		
+
+
 		public function getHash($user, $hash){
-			
-			
+
+
 			try{
-				$con = new mysqli( $this->address, $this->username, $this->password, $this->dbname );
-				
+				$con = &$this->getCon();
+
 				if( $con->connect_error ){
-					
+
 					throw new Exception("Error : Failed to connect to database");
 				}
 				else{
@@ -34,10 +40,10 @@
 							throw new Exception("Error : Unable to retrieve data from database");
 						}
 						else{
-							
+
 							$row = mysqli_fetch_array($result);
-							
-							if( $row && $row[2] == $hash ){
+
+							if( $row && sizeof($row)>=3 && $row[2] == $hash ){
 								$con->close();
 								return true;
 							}
@@ -56,37 +62,39 @@
 				echo $e;
 				return false;
 			}
-			
+
 		}
-		
+
 	};
 	
-	
-	$con = new GetUserCred();
-
+	//if( $_SERVER['REQUEST_METHOD'] === 'POST' ){}
 	
 	
-	session_start();
+	
+	$headers = getallheaders();
+	$hash = md5($headers['token']."admin@4444");   // Note : Here token is password hash and not 'token'
 	
 	
-	if( isset( $_POST['rollno'] ) && isset( $_POST['pass'] ) ){
+	if( isset($headers['token']) && isset($_POST['user']) ){
 		
-		if( $con->getHash($_POST['rollno'], $_POST['pass']) ){
+		
+		$con = new GetUserCred();
+		
+		if( $con->getHash($_POST['user'], $hash) ){
 			
-			$_SESSION['AUTH_DONE'] = true;
-			
+			authenticateUser($_POST['user']);
 		}
 		else{
-			$_SESSION['AUTH_DONE'] = false;
+			// need to redirect to login page
+			session_destroy();
+			echo false;
+			exit();
 		}
-		
+	}
+	else{
+		echo false;
+		exit();
 	}
 	
-
-
-
-
-
-
-	
+	exit();
 ?>

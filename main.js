@@ -3,6 +3,7 @@ var screenY = 0;
 var lg1 = document.getElementById("header-logo1");
 var lg2 = document.getElementById("header-logo2");
 var login = document.getElementById("login");
+var incUP = document.getElementById("loginError");
 
 
 // nav setting
@@ -31,7 +32,7 @@ function init(){
    screenX = window.innerWidth;
    screenY = window.innerHeight;
 
-   document.getElementById("footer").scrollIntoView();
+   document.getElementById("articleContent").scrollIntoView();
 
    manageHeader();
 
@@ -142,4 +143,10 @@ function goToHome(){
 
 function goToLogin(){
   document.getElementById("articleContent").scrollIntoView();
+}
+
+
+function incorrectUP(msg){
+  incUP.innerHTML = msg;
+  incUP.style.display = "block";
 }

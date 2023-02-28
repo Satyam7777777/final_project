@@ -3,12 +3,16 @@
    <head>
 
      <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-     <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scaleable=no" />
+     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-     <title>Alumni Portal</title>
+	   <script src="user/ajax.js"></script>
+	   <script src="encodeCred.js"></script>
+
+	 <title>Alumni Portal</title>
      <link rel="icon" href="img/titlelogo.png" type="image/x-icon"/>
 
      <link rel="stylesheet" href="main.css"/>
+
 
    </head>
 
@@ -50,17 +54,21 @@
       </div>
     </aside>
 
+    <aside id="news-feed">
+
+    </aside>
+
+
     <article id="articleContent">
 
       <section id="login">
 
-        <form method="post" action="login.php" >
 
-          <input type="text" name="rollno" placeholder="Roll Number" required autofocus/>
-          <input type="password" name="pass" placeholder="Password" required>
-          <input type="submit" id="submit" value="SUBMIT" style="width:310px;margin-top:100px;">
+          <input type="text" name="rollno" id="userIn" placeholder="Roll Number" required/>
+          <input type="password" name="pass" id="pass" placeholder="Password" required>
+          <input type="submit" id="submit" onclick="grab()" value="SUBMIT" style="width:310px;margin-top:100px;">
 
-        </form>
+          <div id="loginError">INCORRECT ! Username or Password</div>
 
       </section>
 

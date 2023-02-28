@@ -1,4 +1,7 @@
 /* Desktop */
+html{
+  scroll-behavior: smooth;
+}
 
 body{
   background:#fff;
@@ -78,7 +81,7 @@ nav ul li:hover{
   width:100%;
 }
 
-aside{
+#shutter-main{
   position:absolute;
   top:200px;
   left:0px;
@@ -91,7 +94,7 @@ aside{
   overflow:hidden;
 }
 
-aside #shutter-info{
+#shutter-info{
   height:150px;
   width:50%;
   position:absolute;
@@ -99,7 +102,7 @@ aside #shutter-info{
   left:20%;
 }
 
-aside #shutter-info #shutter-info-txt{
+#shutter-main #shutter-info #shutter-info-txt{
   font-size:40px;
   font-weight:bolder;
   color:#fff;
@@ -169,11 +172,31 @@ aside #shutter-info #shutter-info-txt{
 
 /* Animation area end */
 
+#news-feed{
+  position:absolute;
+  height:600px;
+  width:100%;
+  top:600px;
+  left:0px;
+  background: rgb(32, 44, 122);
+  background-image: url("img/newfeedbac.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: overlay;
+  z-index:9;
+}
+
+
+
+
+
+
 
 
 article{
   position:absolute;
-  top:600px;
+  top:1200px;
   left:0px;
   width:100%;
   height:1100px;
@@ -235,6 +258,18 @@ article #login{
 
 #login:hover{
   animation-name:enlarge;
+  animation-duration: 0.5s;
+  transform:scale(1.5, 1.5);
+}
+
+#login:not(:hover){
+  animation-name:denlarge;
+  animation-duration:0.5s;
+  transform:scale(1.0, 1.0);
+}
+
+#login:focus-within{
+  animation-name:enlarge;
   animation-duration: 1s;
   transform:scale(1.5, 1.5);
 }
@@ -248,27 +283,53 @@ article #login{
   }
 }
 
-article #login form input{
+@keyframes denlarge{
+  0%{
+    transform:scale(1.5, 1.5);
+  }
+  100%{
+    transform: scale(1.0, 1.0);
+  }
+}
 
+article #login input{
+  border-radius: 6px;
   height:40px;
   width:300px;
   margin-top:50px;
   margin-left:50px;
   display:block;
   text-align:center;
+  font-size:22px;
+}
+
+#submit{
+  background:rgb(132,144,170);
 }
 
 #submit:hover{
-  background:red;
+  background:rgb(32,44,70);
+  color:#fff;
 }
 
+#loginError{
+  font-size:20px;
+  color:#f00;
+  position:absolute;
+  height:30px;
+  width:350px;
+  left:25px;
+  bottom:100px;
+  text-align:center;
+  display:none;
+}
 
 footer{
   background: #fff;
   min-height:870px;
   width:100%;
   position:absolute;
-  top:1700px;
+  top:2300px;
   left:0%;
 }
 
@@ -278,6 +339,7 @@ footer .footerSection{
   width:100%;
   color:#fff;
   padding:30px;
+  margin-bottom:30px;
 }
 
 footer .footerSection h3{
