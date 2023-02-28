@@ -34,7 +34,7 @@
 			return ($min<0) ? false : ($min<=15 ? true : false);
 		}
 		
-		private function getPreviousToken($user){
+		public function getPreviousToken($user){
 			
 			
 			try{
