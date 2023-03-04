@@ -3,17 +3,10 @@
 	if( session_status() !== PHP_SESSION_ACTIVE ){
 		session_start();
 	}
-	
-	$same = true;
-	
-	require_once '../autologin/autoToken.php';
-	require_once '../redirect.php';
-	
+		
 	
 	if( isset($_SESSION['user']) && isset($_SESSION['token']) ){
 		
-		$autotoken = new autoToken($_SESSION['user'], $_SESSION['token']);
-		$autotoken->login();
 		
 ?>
 
@@ -26,9 +19,7 @@
   
     <link rel="stylesheet" href="main.css">
 	<script src="ajax.js"></script>
-    <script src="main.js"></script>
-	<script src="status.js"></script>
-	<script src="../autologin/autoToken.js"></script>
+    <script src="adminmain.js"></script>
   </head>
   <body>
 
@@ -60,10 +51,6 @@
 	const token = document.getElementById('token').getAttribute('data-content');
 	
 	 
-    var s = new statusManager();
-	s.init();
-	
-	localSSetUser(user, token);	
 
 	// var scs = new AJAX("test2.php", "POST", true, token);
 	
@@ -82,9 +69,8 @@
 	}
 	else{
 		
-		$url = getRedirect(1);
-		
-		header("Location: ".$url);
+		// redirect to main
+		echo "<h1>User Not Set</h1>";
 	}
 	
 	exit();

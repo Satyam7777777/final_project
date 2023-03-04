@@ -5,8 +5,8 @@
 	}
 	
 
-    require_once __DIR__ . 'user/connection.php';
-	require_once __DIR__ . 'authenticateUser.php';
+    require_once  'user/connection.php';
+	require_once  'authenticateUser.php';
 
 
 	final class GetUserCred extends DBConnection {
@@ -31,7 +31,7 @@
 					throw new Exception("Error : Failed to connect to database");
 				}
 				else{
-					$cmd = "SELECT * FROM $this->credTable where rollno = '$user';";
+					$cmd = "SELECT * FROM $this->credTable WHERE rollno = '$user';";
 					
 					try{
 						$result = $con->query($cmd);
@@ -53,13 +53,13 @@
 						}
 					}
 					catch(Exception $e){
-						echo $e;
+						//echo $e;
 						return false;
 					}
 				}
 			}
 			catch(Exception $e){
-				echo $e;
+				//echo $e;
 				return false;
 			}
 
@@ -72,11 +72,11 @@
 	
 	
 	$headers = getallheaders();
-	$hash = md5($headers['token']."admin@4444");   // Note : Here token is password hash and not 'token'
 	
 	
 	if( isset($headers['token']) && isset($_POST['user']) ){
 		
+		$hash = md5($headers['token']."admin@4444");   // Note : Here token is password hash and not 'token'
 		
 		$con = new GetUserCred();
 		

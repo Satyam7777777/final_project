@@ -18,11 +18,10 @@ function hideShow(){
 
 function logout(){
 	
-	var me = new AJAX("logout.php", "POST", true, token);
+	var me = new AJAX("logoutadmin.php", "POST", true, token);
 	me.init();
-	me.send("logout=true", function(arg){
+	me.send("logoutadmin=true", function(arg){
 		
-		s.destruct();
 		
 		console.log(arg);
 		

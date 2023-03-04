@@ -5,7 +5,7 @@ class statusManager{
 	t = null;
 	
 	constructor(){
-		this.time = 2000;
+		this.time = 15000;
 	}
 	
 	init(){
@@ -19,8 +19,6 @@ class statusManager{
 	
 	
 	callAlive(){
-		console.log("Calling Alive");
-		//console.log(token);
 		
 		var hold = new AJAX("status.php", "POST", true, token);
 		hold.init();

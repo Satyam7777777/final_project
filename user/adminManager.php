@@ -4,27 +4,21 @@
 		session_start();
 	}
 	
-	
 	require_once 'connection.php';
-	require_once 'status.php';
-	require_once 'logout.php';
 	
 	
-	
-	
-	class tokenManager extends DBConnection{
+	final class adminManager extends DBConnection{
 		
 		protected $token;
 		protected $timeout;
 		protected $credTable;
 		protected $user;
 		
-		
 		public function __construct($user){
 			
-			parent::__construct();
+			parent::__construct($user);
 			
-			$this->credTable = userCred;
+			$this->credTable = adminCred;
 			$this->user = $user;
 			$this->init();
 		}
@@ -37,32 +31,29 @@
 		
 		public function getPreviousToken($user){
 			
-			
 			try{
 				$con = &$this->getCon();
-
+				
 				if( $con->connect_error ){
-
 					throw new Exception("Error : Failed to connect to database");
 				}
 				else{
-					$cmd = "SELECT * FROM $this->credTable WHERE rollno = '$user';";
+					$cmd = "SELECT * FROM $this->credTable WHERE fname = '$user';";
 					
 					try{
 						$result = $con->query($cmd);
-
+						
 						if( !$result ){
 							throw new Exception("Error : Unable to retrieve data from database");
 						}
 						else{
-
 							$row = mysqli_fetch_array($result);
-
-							if( $row && sizeof($row)>=5 && $this->timeDiff((int)$row[4]) ){
+							
+							if( $row && sizeof()>=8 && $this->timeDiff((int)$row[3]) ){
 								
-								$this->token = $row[3];
-								$this->timeout = $row[4];
-																
+								$this->token = $row[2];
+								$this->timeout = $row[3];
+								
 								$con->close();
 								return true;
 							}
@@ -85,14 +76,15 @@
 			return true;
 		}
 		
+		
 		public function updateTime($user, $t=false){
 			
 			$con = &$this->getCon();
 			
 			if( !$con ) return false;
 			
-			$time = $t==false ? floor(time()) : floor( time() - 3600 );
-			$cmd = "UPDATE $this->credTable SET lastTime='$time' WHERE rollno='$user'";
+			$time = ( $t==false ? floor(time()) : floor( time() - 3600 ) );
+			$cmd = "UPDATE $this->credTable SET lastTime='$time' WHERE fname='$user';";
 			$result = $con->query($cmd);
 			
 			$con->close();
@@ -100,41 +92,11 @@
 			if( $result ) return true;
 			return false;
 		}
-		
-		public function updateToken($user, $token){
-			
-			$con = &$this->getCon();
-			
-			if( !$con ) return false;
-			
-			$cmd = "UPDATE $this->credTable SET token='$token' WHERE rollno='$user'";
-			$result = $con->query($cmd);
-
-			$con->close();
-			
-			if( $result ) return true;
-			
-			return false;
-		}
-		
-		
-		
-		
-		public function checkOnline($user){
-			
-			$status = new statusManager();
-			return $status->checkOnline($user);
-		}
-		
-		
 		
 		
 		private function createNewToken(){
 			
 			$this->token = bin2hex(random_bytes(16));
-			
-			$this->updateTime($this->user);
-			$this->updateToken($this->user, $this->token);
 		}
 		
 		public function getToken(){
@@ -143,39 +105,33 @@
 		
 		public function init(){
 			
-			if( isset($_POST['autologin']) && $_POST['autologin'] == "true" && $this->getPreviousToken($this->user) ){
-				
-				if( $this->checkOnline($this->user) ){      // this is for auto login
-					//echo "credendials success";
-					$this->updateTime($this->user);
-					return true;
-				}
-				else{
-					
-					//echo "we are here";
-					logout();
-					session_destroy();
-					//header("Location : https");
-				}
-			}
-			else{		
+			if( isset($_SESSION['admin']) && isset($_POST['user']) && isset($_POST['user']) ){
 				$this->createNewToken();
 			}
+			else if( isset($_SESSION['admin']) && !isset($_POST['user']) ){
+				
+				$headers = getallheaders();
+				
+				if( isset($headers['token']) && $headers['token'] == $_SESSION['token'] ){
+					// good
+				}
+				else{
+					session_destroy();
+				}
+			}
+			else{
+				session_destroy();
+			}
 		}
-		
 		
 		public function authenticateToken($token){
 			
-			$headers = getallheaders();
-			
-			if( isset($headers['token']) && $token == $headers['token'] ){
+			if( $this->token == $token ){
 				return true;
 			}
-			
 			return false;
 		}
-		
+
 	};
 	
-
 ?>

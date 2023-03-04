@@ -5,7 +5,7 @@
 	}
 	
 	require_once 'user/token.php';
-	
+	require_once 'user/adminManager.php';
 		
 	
 	function authenticateUser($user){
@@ -17,4 +17,16 @@
 		
 		$_SESSION['token'] = $token->getToken();
 	}
+	
+	function authenticateAdminUser($user){
+		
+		echo  "User Authenticated";
+		
+		$_SESSION['user'] = $user;
+		$_SESSION['admin'] = true;
+		$token = new adminManager($user);
+		
+		$_SESSION['token'] = $token->getToken();
+	}
+	
 ?>

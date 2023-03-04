@@ -2,8 +2,10 @@ var screenX = 0;
 var screenY = 0;
 var lg1 = document.getElementById("header-logo1");
 var lg2 = document.getElementById("header-logo2");
-var login = document.getElementById("login");
+var loginAdmin = document.getElementById("loginAdmin");
 var incUP = document.getElementById("loginError");
+var incadminUP = document.getElementById("adminError");
+
 
 
 // nav setting
@@ -44,7 +46,7 @@ function init(){
    }
 
    // algin the Login
-   login.style.left = ((screenX - login.offsetWidth)/2) + "px";
+   loginAdmin.style.left = ((screenX - login.offsetWidth)/2) + "px";
    //alert( (screenX - login.offsetLeft)/2 );
 }
 
@@ -150,3 +152,27 @@ function incorrectUP(msg){
   incUP.innerHTML = msg;
   incUP.style.display = "block";
 }
+
+function incorrectadminUP(msg){
+  incadminUP.innerHTML = msg;
+  incadminUP.style.display = "block";
+}
+
+var rotateAdminLogin = true;
+
+function rotateAL(){
+  var loginAdmin = document.getElementById("loginAdmin");
+
+  if( rotateAdminLogin ){
+      loginAdmin.classList.remove("ro2");
+      loginAdmin.classList.add("ro1");
+  }
+  else{
+      loginAdmin.classList.remove("ro1");
+      loginAdmin.classList.add("ro2");
+  }
+
+  rotateAdminLogin = !rotateAdminLogin;
+}
+
+rotateAL();

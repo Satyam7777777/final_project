@@ -1,18 +1,10 @@
 <?php
 	
-	$url = 'http://';
+	$same = true;
+	require_once '../autologin/autoToken.php';
 	
-	if( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on' ){
-		$url = 'https://';
-	}
+	$autotoken = new autoToken($_SESSION['user'], $_SESSION['token']);
 	
-	$url .= $_SERVER['HTTP_HOST'];
-	$parsed = explode("/", $_SERVER['REQUEST_URI']);
-	$size = sizeof($parsed);
+	echo $autotoken->getToken();
 	
-	for($x=0; $x<$size-1; $x++){
-		$url = $url.'/'.$parsed[$x];
-	}
-	
-	header("Location: ".$url);
 ?>

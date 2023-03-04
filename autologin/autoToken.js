@@ -27,29 +27,35 @@ function localSDeleteUser(){
 
 function localSSendCred(){
 	
-	var autoToken = new AJAX("autoToken.php", "POST", true, token);
+	var autoToken = new AJAX("autologin/autoToken.php", "POST", true, token);
 		
 	autoToken.init();
-	autoToken.send("login=true&user="+user+"&token="+token, function(arg){
-			
-		console.log(arg);
-			
+	autoToken.send("autologin=true&user="+user+"&token="+token, function(arg){
+				
+		
+		if( arg=="credendials failed" || arg=="" ){
+			location.assign('http://127.0.0.1/final/final_project/home.php?default=true');
+		}
+		else if( arg=="credendials success" ){
+			// Autologin : prepare for authenticated user	
+			location.assign('http://127.0.0.1/final/final_project/user/loggedin.php');
+		}	
 	});
 }
 
 
 
-var token = null;
-var user = null;
+// var token = null;
+// var user = null;
 
-//localSDeleteUser();
+// localSDeleteUser();
 
-if( localSTokenExist() ){
-	console.log(localSGetToken());
-	token = localSGetToken();
-	user = localSGetUser();
-}
-else{
-	console.log("Setting Credendials");
-	localSSetUser("CSE/19/06", "12345667");
-}
+// if( localSTokenExist() ){
+	// console.log(localSGetToken());
+	// token = localSGetToken();
+	// user = localSGetUser();
+// }
+// else{
+	// console.log("Setting Credendials");
+	// localSSetUser("CSE/19/06", "12345667");
+// }

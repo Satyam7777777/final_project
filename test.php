@@ -6,15 +6,15 @@
 		$url = 'https://';
 	}
 	
-	$url .= $_SERVER['HTTP_HOST'];
+	$url .= $_SERVER['HTTP_HOST'];	
 	$parsed = explode("/", $_SERVER['REQUEST_URI']);
 	$size = sizeof($parsed);
 	
-	for($x=0; $x<$size-1; $x++){
+	for($x=1; $x<($size-1); $x++){
 		$url = $url.'/'.$parsed[$x];
 	}
 	
-	echo $url;
+	 echo $url;
 	
 	// if( (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) ){
 		

@@ -67,6 +67,7 @@ nav ul li{
   position:relative;
   top:-16px;
   padding-top:22px;
+  cursor:pointer;
 }
 
 nav ul li:hover{
@@ -245,34 +246,70 @@ article{
 
 /* Background animation end */
 
-article #login{
-  height:500px;
+article #loginAdmin{
+  height:450px;
   width:400px;
-  background: rgba(32,44,170,0.5);
   position:absolute;
   top:250px;
   left:50px;
   border-radius: 20px;
   border:1px solid #fff;
+  transform-style:preserve-3d;
 }
 
-#login:hover{
+.ro1{
+  animation-name: rotateLoginAdmin;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  transform: perspective(800px) rotateY(180deg);
+}
+
+@keyframes rotateLoginAdmin {
+  0%{
+    transform: perspective(800px) rotateY(0deg);
+  }
+  100%{
+    transform: perspective(800px) rotateY(180deg);
+  }
+}
+
+.ro2{
+  animation-name: rotateLoginAdmin2;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  transform: perspective(800px) rotateY(0deg);
+}
+
+@keyframes rotateLoginAdmin2 {
+  0%{
+    transform: perspective(800px) rotateY(180deg);
+  }
+  100%{
+    transform: perspective(800px) rotateY(0deg);
+  }
+}
+
+/*
+#loginAdmin:hover{
   animation-name:enlarge;
   animation-duration: 0.5s;
   transform:scale(1.5, 1.5);
 }
 
-#login:not(:hover){
+#loginAdmin:not(:hover){
   animation-name:denlarge;
   animation-duration:0.5s;
   transform:scale(1.0, 1.0);
 }
 
-#login:focus-within{
+#loginAdmin:focus-within{
   animation-name:enlarge;
   animation-duration: 1s;
   transform:scale(1.5, 1.5);
 }
+
 
 @keyframes enlarge{
   0%{
@@ -290,6 +327,17 @@ article #login{
   100%{
     transform: scale(1.0, 1.0);
   }
+}
+*/
+
+#login{
+  height:450px;
+  width:400px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  border-radius: 20px;
+  background: rgb(0,12,138);
 }
 
 article #login input{
@@ -314,6 +362,7 @@ article #login input{
 
 #loginError{
   font-size:20px;
+  font-weight: bolder;
   color:#f00;
   position:absolute;
   height:30px;
@@ -323,6 +372,92 @@ article #login input{
   text-align:center;
   display:none;
 }
+
+#loginOptions{
+  font-size:20px;
+  color:rgb(0,162, 234);
+  position:absolute;
+  height:30px;
+  width:350px;
+  left:25px;
+  bottom:50px;
+  text-align:center;
+  cursor:pointer;
+  font-size:20px;
+  font-weight: bolder;
+}
+
+#loginOptions span{
+  color:#fff;
+}
+
+#loginOptions span:hover{
+  color:rgb(153,217, 234);
+}
+
+#admin{
+  height:450px;
+  width:400px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  border-radius: 20px;
+  transform:translateZ(-1px) rotateY(180deg);
+  background: rgb(0,12,138);
+}
+
+
+article #admin input{
+  border-radius: 6px;
+  height:40px;
+  width:300px;
+  margin-top:50px;
+  margin-left:50px;
+  display:block;
+  text-align:center;
+  font-size:22px;
+}
+
+#adminsubmit{
+  background:rgb(132,144,170);
+}
+
+#adminError{
+  font-size:20px;
+  font-weight: bolder;
+  color:#f00;
+  position:absolute;
+  height:30px;
+  width:350px;
+  left:25px;
+  bottom:100px;
+  text-align:center;
+  display:none;
+}
+
+#adminOptions{
+font-size:20px;
+color:rgb(0,162, 234);
+position:absolute;
+height:30px;
+width:350px;
+left:25px;
+bottom:50px;
+text-align:center;
+cursor:pointer;
+font-size:20px;
+font-weight: bolder;
+}
+
+#adminOptions span{
+color:#fff;
+}
+
+#adminOptions span:hover{
+color:rgb(153,217, 234);
+}
+
+
 
 footer{
   background: #fff;

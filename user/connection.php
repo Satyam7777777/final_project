@@ -6,6 +6,7 @@
     define("dbname",   "alumni_portal");
 
     define("userCred", "usercred");
+	define("adminCred", "admincred");
    
    
     abstract class DBConnection {
