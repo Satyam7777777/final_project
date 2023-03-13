@@ -3,9 +3,11 @@
 	if( session_status() !== PHP_SESSION_ACTIVE ){
 		session_start();
 	}
-		
 	
-	if( isset($_SESSION['user']) && isset($_SESSION['token']) ){
+	require_once 'fileHandle/getProfile.php';
+	
+	
+	if( isset($_SESSION['user']) && isset($_SESSION['token']) && isset($_SESSION['user']) ){
 		
 		
 ?>
@@ -15,6 +17,17 @@
 	
 	<meta id="user" name="user" data-content="<?php echo $_SESSION['user']; ?>" />
 	<meta id="token" name="token" data-content="<?php echo $_SESSION['token']; ?>" />
+	<meta id="profilePicURL" name="profilePIC" data-content="<?php
+		$getP = new GetProfile(true);
+		$image = $getP->getProfile();
+		
+		if( $image=="" ){
+			echo "NULL";
+		}
+		else{
+			echo "userImg/".$image;
+		}
+	?>" />
   
   
     <link rel="stylesheet" href="main.css">
@@ -27,7 +40,7 @@
       <div id="logo"></div>
       <div id="logoInfo">ALUMNI PORTAL <span>NIT Arunachal Pradesh</span> </div>
       <div id="bell"></div>
-      <div id="user"></div>
+      <div id="userProfile"></div>
       <div id="arrow" onclick="hideShow()" data-value="1"></div>
 
       <div id="arrowOption">
@@ -60,7 +73,16 @@
 			// console.log(arg);
 		// });
 	// }
-
+	
+	var userPic = document.getElementById("profilePicURL").getAttribute("data-content");;
+	
+	if( userPic != "NULL" ){
+		document.getElementById("userProfile").style.backgroundImage = "url("+userPic+")";
+	}
+	
+	//location.assign('http://127.0.0.1/final/final_project/user/'+userPic);
+	
+	
   </script>
 </html>
 
@@ -72,6 +94,20 @@
 		// redirect to main
 		echo "<h1>User Not Set</h1>";
 	}
+	
+	/*
+	
+	$getP = new GetProfile(true);
+		$image = $getP->getProfile();
+		
+		if( $image=="" ){
+			echo "NULL";
+		}
+		else{
+			echo $image;
+		}
+	
+	*/
 	
 	exit();
 ?>

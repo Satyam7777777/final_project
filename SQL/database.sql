@@ -14,6 +14,7 @@ CREATE TABLE admincred (
 	fname	VARCHAR(20) NOT NULL,
 	mname 	VARCHAR(20) NOT NULL,
 	lname 	VARCHAR(20) NOT NULL,
+	profile	VARCHAR(37),
 	
 	dept	VARCHAR(8) NOT NULL
 );
@@ -36,7 +37,8 @@ CREATE TABLE usercred (
 	dept 	VARCHAR(8) NOT NULL,
 	course 	VARCHAR(8) NOT NULL,
 	sYear 	INT NOT NULL,
-	eYear 	INT NOT NULL
+	eYear 	INT NOT NULL,
+	profile VARCHAR(37)
 );
 
 

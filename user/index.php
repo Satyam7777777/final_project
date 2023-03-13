@@ -1,18 +1,8 @@
 <?php
 	
-	$url = 'http://';
+	require_once '../redirect.php';
 	
-	if( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on' ){
-		$url = 'https://';
-	}
-	
-	$url .= $_SERVER['HTTP_HOST'];
-	$parsed = explode("/", $_SERVER['REQUEST_URI']);
-	$size = sizeof($parsed);
-	
-	for($x=0; $x<$size-2; $x++){
-		$url = $url.'/'.$parsed[$x];
-	}
-	
+	$url = getRedirect(1);
+	0
 	header("Location: ".$url);
 ?>

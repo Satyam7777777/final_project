@@ -1,10 +1,6 @@
 <?php
 	
-	$same = true;
-	require_once '../autologin/autoToken.php';
-	
-	$autotoken = new autoToken($_SESSION['user'], $_SESSION['token']);
-	
-	echo $autotoken->getToken();
+	$str = bin2hex(random_bytes(16));
+	echo strlen($str);
 	
 ?>

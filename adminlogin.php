@@ -47,6 +47,7 @@
 								return true;
 							}
 							
+							
 							$con->close();
 							return false;
 						}
@@ -80,6 +81,7 @@
 			authenticateAdminUser($_POST['user']);
 		}
 		else{
+			echo "Here";
 			// need to redirect to admin login page
 			session_destroy();
 			echo false;

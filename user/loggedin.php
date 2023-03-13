@@ -22,6 +22,17 @@
 	
 	<meta id="user" name="user" data-content="<?php echo $_SESSION['user']; ?>" />
 	<meta id="token" name="token" data-content="<?php echo $_SESSION['token']; ?>" />
+	<meta id="profilePicURL" name="profilePIC" data-content="<?php
+		$getP = new GetProfile(false);
+		$image = $getP->getProfile();
+		
+		if( $image=="" ){
+			echo "NULL";
+		}
+		else{
+			echo "userImg/".$image;
+		}
+	?>" />
   
   
     <link rel="stylesheet" href="main.css">
@@ -36,7 +47,7 @@
       <div id="logo"></div>
       <div id="logoInfo">ALUMNI PORTAL <span>NIT Arunachal Pradesh</span> </div>
       <div id="bell"></div>
-      <div id="user"></div>
+      <div id="userProfile"></div>
       <div id="arrow" onclick="hideShow()" data-value="1"></div>
 
       <div id="arrowOption">
@@ -64,6 +75,13 @@
 	s.init();
 	
 	localSSetUser(user, token);	
+
+
+	var userPic = document.getElementById("profilePicURL").getAttribute("data-content");;
+	
+	if( userPic != "NULL" ){
+		document.getElementById("userProfile").style.backgroundImage = "url("+userPic+")";
+	}
 
 	// var scs = new AJAX("test2.php", "POST", true, token);
 	
