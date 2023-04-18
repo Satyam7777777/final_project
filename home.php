@@ -1,19 +1,19 @@
 <?php
-	
+
 	//if( session_status() !== PHP_SESSION_ACTIVE ){
 		//session_start();
 	//}
-	
+
 	require_once 'redirect.php';
-	
-	
-	
+
+
+
 	if( isset($_GET['default']) && $_GET['default']=="true" ){
-	
+
 	// -----------------------------------------------------------------
  ?>
- 
- 
+
+
  <!DOCTYPE html>
 <html>
    <head>
@@ -27,10 +27,10 @@
 
 
 	 <title>Alumni Portal</title>
-     
+
 	 <link rel="icon" href="img/titlelogo.png" type="image/x-icon"/>
      <link rel="stylesheet" href="main.css" />
-
+		 <link rel="stylesheet" href="newsFeed.css"/>
 
    </head>
 
@@ -49,7 +49,7 @@
     <nav>
       <ul id="options">
         <li onclick="goToHome()">Home</li>
-        <li>News</li>
+        <li onclick="gotToNews()">News</li>
         <li>Register</li>
         <li onclick="goToLogin()">Login</li>
       </ul>
@@ -62,7 +62,7 @@
     <aside id="shutter-main">
 
       <div id="shutter-info">
-        <div id="shutter-info-txt">Liton Barman</div>
+        <div id="shutter-info-txt">NIT Arunachal Pradesh</div>
         <div id="shutter-info-explore">Explore</div>
       </div>
 
@@ -74,6 +74,11 @@
 
     <aside id="news-feed">
 
+		<div class="mother-container" id="newsFeedContainer1" style="left:5%;width:18.75%;"></div>
+		<div class="mother-container" id="newsFeedContainer2" style="left:28.75%;width:18.75%;"></div>
+		<div class="mother-container" id="newsFeedContainer3" style="left:52.5%;width:18.75%;"></div>
+		<div class="mother-container" id="newsFeedContainer4" style="right:5%;width:18.75%;"></div>
+
     </aside>
 
 
@@ -82,6 +87,8 @@
       <section id="loginAdmin">
 
         <div id="login">
+
+						<h1>User Login</h1>
 
             <input type="text" name="rollno" id="userIn" placeholder="Roll Number" required/>
             <input type="password" name="pass" id="pass" placeholder="Password" required>
@@ -96,6 +103,8 @@
         </div>
 
         <div id="admin">
+
+					<h1>Admin Login</h1>
 
           <input type="text" name="rollno" id="adminIn" placeholder="Username" required/>
           <input type="password" name="pass" id="adminpass" placeholder="Password" required>
@@ -159,62 +168,66 @@ Arunachal Pradesh, India - 791113<p>
    </body>
    <script id="testHide4"><?php include 'main.js'; ?></script>
    <script id="testHide5">
-   
+
 	var token = null;
 	var user = null;
-	
+
 	function checkAccidentalBack(){
-		
+
 		if( localSTokenExist() ){
 			token = localSGetToken();
 			user = localSGetUser();
-			
+
 			var autoToken = new AJAX("autologin/autoToken.php", "POST", true, token);
-		
+
 			autoToken.init();
 			autoToken.send("autologin=true&user="+user+"&token="+token, function(arg){
-						
-				
+
+
 				if( arg=="credendials failed" || arg=="" ){
 					localSDeleteUser();
 				}
 				else if( arg=="credendials success" ){
-					// Autologin : prepare for authenticated user	
+					// Autologin : prepare for authenticated user
 					location.assign('http://127.0.0.1/final/final_project/user/loggedin.php');
-				}	
+				}
 			});
 		}
 	}
-   
+
 	window.onload = function(){
 		init();
-		
+
 		checkAccidentalBack();
 	}
-	
+
 	window.onresize = function(){
 		init();
 	}
-   
-	document.getElementById("testHide1").remove();
-	document.getElementById("testHide2").remove();
-	document.getElementById("testHide3").remove();
-	document.getElementById("testHide4").remove();
-	document.getElementById("testHide5").remove();
+
+	//document.getElementById("testHide1").remove();
+	//document.getElementById("testHide2").remove();
+	//document.getElementById("testHide3").remove();
+	//document.getElementById("testHide4").remove();
+	//document.getElementById("testHide5").remove();
 
 
    </script>
+
+	 <script src="newsFeed.js"></script>
+
+
 </html>
 
- 
 
-<?php 
+
+<?php
 	// -----------------------------------------------------------------
 	}
 	else{
-		
+
 		$url = getRedirect();
-		
+
 		header("Location: ".$url);
 		exit();
 	}

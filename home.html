@@ -9,9 +9,10 @@
 	   <script src="encodeCred.js" id="testHide2"></script>
 
 	 <title>Alumni Portal</title>
-     
+
 	 <link rel="icon" href="img/titlelogo.png" type="image/x-icon"/>
      <link rel="stylesheet" href="main.css" />
+	    <link rel="stylesheet" href="newsFeed.css"/>
 
 
    </head>
@@ -31,7 +32,7 @@
     <nav>
       <ul id="options">
         <li onclick="goToHome()">Home</li>
-        <li>News</li>
+        <li onclick="gotToNews()">News</li>
         <li>Register</li>
         <li onclick="goToLogin()">Login</li>
       </ul>
@@ -54,7 +55,13 @@
       </div>
     </aside>
 
-    <aside id="news-feed">
+    <aside id="news-feed" style="">
+
+		<div class="mother-container" id="newsFeedContainer1" style="left:5%;width:18.75%;"></div>
+		<div class="mother-container" id="newsFeedContainer2" style="left:28.75%;width:18.75%;"></div>
+		<div class="mother-container" id="newsFeedContainer3" style="left:52.5%;width:18.75%;"></div>
+    <div class="mother-container" id="newsFeedContainer4" style="right:5%;width:18.75%;"></div>
+
 
     </aside>
 
@@ -64,6 +71,8 @@
       <section id="loginAdmin">
 
         <div id="login">
+
+            <h1>User Login</h1>
 
             <input type="text" name="rollno" id="userIn" placeholder="Roll Number" required/>
             <input type="password" name="pass" id="pass" placeholder="Password" required>
@@ -78,6 +87,8 @@
         </div>
 
         <div id="admin">
+
+          <h1>Admin Login</h1>
 
           <input type="text" name="rollno" id="adminIn" placeholder="Username" required/>
           <input type="password" name="pass" id="adminpass" placeholder="Password" required>
@@ -141,18 +152,22 @@ Arunachal Pradesh, India - 791113<p>
    </body>
    <script src="main.js" id="testHide3"></script>
    <script id="testHide4">
-   
+
 	window.onload = function(){
 		init();
 	}
-	
+
 	window.onresize = function(){
 		init();
 	}
-   
+
 	document.getElementById("testHide1").remove();
 	document.getElementById("testHide2").remove();
 	document.getElementById("testHide3").remove();
 	document.getElementById("testHide4").remove();
    </script>
+
+
+   <script src="newsFeed.js"></script>
+
 </html>

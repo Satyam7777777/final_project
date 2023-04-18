@@ -34,9 +34,12 @@ function init(){
    screenX = window.innerWidth;
    screenY = window.innerHeight;
 
-   document.getElementById("articleContent").scrollIntoView();
+   //document.getElementById("articleContent").scrollIntoView();
+   //goToLogin();
+   gotToNews();
 
    manageHeader();
+   manageFeeds();
 
    if(screenX > 768){
      options.style.display = "block";
@@ -74,7 +77,7 @@ function manageHeader(){
 
 /* Animation area */
 
-var images = ["img/1.jpg", "img/2.jpg"];
+var images = ["img/images.jpeg", "img/gh.jpg"];
 var container = document.getElementById("shutter-main");
 var shutter = document.getElementById("shutter");
 var explore = document.getElementById("shutter-info-explore");
@@ -145,6 +148,10 @@ function goToHome(){
 
 function goToLogin(){
   document.getElementById("articleContent").scrollIntoView();
+}
+
+function gotToNews(){
+  document.getElementById("fillPlace").scrollIntoView();
 }
 
 

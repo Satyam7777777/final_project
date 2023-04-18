@@ -1,0 +1,121 @@
+<html>
+  <head>
+
+	<meta id="token" name="token" data-content="this is token" />
+
+
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="manUserContainer.css" />
+
+	<script src="ajax.js"></script>
+	<script src="status.js"></script>
+  </head>
+
+  <body onload="resizeArticle()" onresize="resizeArticle()" >
+
+    <header>
+      <div id="logo"></div>
+      <div id="logoInfo">ALUMNI PORTAL <span>NIT Arunachal Pradesh</span> </div>
+      <div id="bell"></div>
+      <div id="userProfile"></div>
+      <div id="arrow" onclick="hideShow()" data-value="1"></div>
+
+      <div id="arrowOption">
+          <div onclick="logout()" class="arrowOption1">LOGOUT <img src="img/logout.png"/></div>
+      </div>
+
+    </header>
+
+    <nav>
+      <ul>
+        <li id="navoption1" onclick="hideShowSections(1)" style="background:black;"></li>
+        <li id="navoption2" onclick="hideShowSections(2)"></li>
+        <li id="navoption3" onclick="hideShowSections(3)"></li>
+      </ul>
+    </nav>
+
+    <article id="articleContent">
+
+      <section id="articleSection1" style="background:green;display:none;"></section>
+
+      <section id="articleSection2" style="display:none;">
+
+        <div id="groupAside">
+
+          <div class="groupAsideSectionDes">Groups :</div>
+          <div class="groupAsideSection" id="groupAsideSection1">
+
+
+          </div>
+
+          <div class="groupAsideSectionDes">Personal :</div>
+          <div class="groupAsideSection" id="groupAsideSection2">
+
+          </div>
+
+        </div>
+
+        <div id="chatBox">
+
+          <div id="chatContainer">
+
+
+
+          </div>
+
+          <div id="inputEmoji">
+          </div>
+
+          <div id="chatInput">
+
+            <input id="inputArea" placeholder="Aa" type="text"/>
+            <div id="inputEmojiButton" data-value="1" onclick="hideShowEmoji()"></div>
+            <div id="sendButton"></div>
+          </div>
+        </div>
+
+      </section>
+
+      <section id="articleSection3" style="background:black;display:block;">
+
+        <div id="manUserContainer">
+
+          <div id="manUserSearch">
+                <li><input /></li>
+                <li></li>
+                <li></li>
+                <li></li>
+          </div>
+
+        </div>
+
+      </section>
+
+    </article>
+
+    <footer>
+      © Copyright 2023 by NIT Arunachal Pradesh, All Rights Reserved. Developed by
+      <span style="color:green;">Akrati Singh, Liton Barman, Satyam</span>
+      Privacy Policy | Legal Disclaimer | RTI | Terms & Conditions |
+    </footer>
+  </body>
+  <script>
+
+
+
+
+	var temp = document.getElementById('token').getAttribute('data-content');
+
+	console.log(temp);
+
+    //var s = new statusManager();
+	//s.init();
+
+  </script>
+  <script src="main.js"></script>
+  <script>
+
+    hideShowSections(3);
+
+  </script>
+</html>
