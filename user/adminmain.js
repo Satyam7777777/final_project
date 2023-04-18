@@ -31,3 +31,16 @@ function logout(){
 		},2000);
 	});
 }
+
+function hideShowSections(id){
+
+  for(x=1; x<4; x++){
+    if( x==id ) continue;
+    document.getElementById("navoption"+x).style.background = "rgba(32,44,170,0.8)";
+    document.getElementById("articleSection"+x).style.display = "none";
+  }
+
+  document.getElementById("navoption"+id).style.background = "black";
+  document.getElementById("articleSection"+id).style.display = "block";
+
+}
