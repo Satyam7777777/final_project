@@ -50,7 +50,7 @@
       <ul id="options">
         <li onclick="goToHome()">Home</li>
         <li onclick="gotToNews()">News</li>
-        <li>Register</li>
+		<a href="register.html"><li>Register</li></a>
         <li onclick="goToLogin()">Login</li>
       </ul>
 
