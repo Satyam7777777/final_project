@@ -296,10 +296,10 @@ function addEmojis(){
     el.innerHTML = "&#"+emoji;
     el.setAttribute('data-value', el.innerHTML);
 
-    console.log(el.innerHTML);
+    //console.log(el.innerHTML);
 
     el.onclick = function(){
-      console.log(el.innerHTML);
+      //console.log(el.innerHTML);
     }
 
     emoji++;

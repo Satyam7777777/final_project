@@ -48,21 +48,23 @@
       }
       label{
         position:absolute;
-        left:6%;
-        top: 100px;width: max-content;
+        left:0px;
+        top: 100px;
+        width: max-content;
       }
       input{
         position:absolute;
-        left:6%;
-        top: 100px;border: none;
+        top: 100px;
+        border: none;
         border-bottom: 2px dotted black;
         outline:none;
+        margin-left:14px;
       }
     </style>
   </head>
   <body id="main">
 
-    <header>
+    <header id="registerHeader">
 
        <img id="header-logo1" src="img/logo.png" height=90 />
        <div id="header-logo2">
@@ -72,7 +74,7 @@
 
     </header>
 
-   <nav>
+   <nav id="registerNav">
      <ul id="options">
        <a href="index.php"><li onclick="goToHome()">Home</li></a>
      </ul>
@@ -97,169 +99,81 @@
               onchange="assignImage(event)"
               style="display:none;position:absolute;top:40px;right:40px;width:1px;"
               />
-          </div>
-          <div
-            style="position:absolute;top:160px;width:100%;font-weight:bold;text-align:center;">APPLICATION
-            FORM FOR ALUMNI PORTAL MEMBERSHIP OF NIT, AP</div>
-          <hr style="width:90%;border:2px solid
-            #000;position:absolute;left:5%;top:190px;" />
-          <h4 style="top:192px;">PERSONAL DETAILS</h4>
-          <div style="position: absolute;top: 232px;left: 6%;">
-          <label for="fristname" style="top: 13px;">Frist Name</label>
-          <input type="text" id="fristname" name="fristname" title="fristname" style="top: 13px;left: 74px;width: 290px;">
-          <label for="middlename" style="
-            top: 13px;
-            left: 366px;
-            ">Middle Name</label>
-          <input type="text" id="middlename" name="middlename" title="middlename" style="
-            top: 13px;
-            left: 456px;
-            width: 250px;
-            ">
-          <label for="lastname" style="
-            top: 43px;
-            left: 0;
-            ">Last Name</label>
-          <input type="text" id="lastname" name="lastname" title="lastname" style="
-            top: 43px;
-            left: 72px;
-            width: 633px;
-            ">
-          <label for="rollno" style="
-            top: 79px;
-            left: 0;
-            ">Roll no</label>
-          <input type="text" id="rollno" name="rollno" title="rollno" style="
-            top: 77px;
-            left: 49px;
-            width: 658px;
-            ">
-          <label for="department" style="
-            top: 112px;
-            left: 0;
-            ">Department</label>
-          <input type="text" id="department" name="department" title="department" style="
-            top: 112px;
-            left: 76px;
-            width: 631px;
-            ">
-          <label for="startyear" style="
-            top: 144px;
-            /* left: 0; */
-            ">Start year</label>
-          <input type="text" id="startyear" name="startyear" title="startyear" style="
-            top: 144px;
-            left: 62px;
-            width: 300px;
-            ">
-          <label for="endyear" style="
-            top: 144px;
-            left: 365px;
-            ">End year</label>
-          <input type="text" id="endyear" name="endyear" title="endyear" style="
-            top: 144px;
-            left: 423px;
-            width: 282px;
-            ">
-          <label for="address" style="
-            top: 176px;
-            ">Address</label>
-          <input type="text" id="address" name="address" title="address" style="
-            top: 173px;
-            left: 57px;
-            width: 650px;
-            ">
+      </div>
 
-          <input type="text" id="address1" name="address1" title="address1" style="top: 203px; left: 0px;width: 707px;"/>
+      <div style="position:absolute;top:160px;width:100%;font-weight:bold;text-align:center;">APPLICATION FORM FOR ALUMNI PORTAL MEMBERSHIP OF NIT, AP</div>
 
+      <hr style="width:90%;border:2px solid #000;position:absolute;left:5%;top:190px;" />
 
-          <label for="pincode" style="
-            top: 234px;
-            ">Pin Code</label>
-          <input type="text" id="pincode" name="pincode" title="pincode" style="
-            top: 234px;
-            left: 64px;
-            width: 645px;
-            ">
-          <label for="sociallink1" style="
-            top: 269px;
-            ">Social link 1</label>
-          <input type="text" id="sociallink1" name="sociallink1" title="sociallink1" style="
-            top: 268px;
-            left: 82px;
-            width: 287px;
-            ">
-          <label for="sociallink2" style="
-            top: 269px;
-            left: 371px;
-            ">Social Link 2</label>
-          <input type="text" id="sociallink2" name="sociallink2" title="sociallink2" style="
-            top: 268px;
-            left: 452px;
-            width: 257px;
-            ">
-          <label for="phoneno1" style="
-            top: 303px;
-            ">Phone 1</label>
-          <input type="text" id="phoneno1" name="phoneno1" title="phoneno1" style="
-            top: 303px;
-            left: 73px;
-            width: 287px;
-            ">
-          <label for="phoneno2" style="
-            top: 303px;
-            left: 363px;
-            ">Phone 2</label>
-          <input type="text" id="phoneno2" name="phoneno2" title="phoneno2" style="
-            top: 303px;
-            left: 436px;
-            width: 274px;
-            ">
-          <label for="email1" style="
-            top: 336px;
-            ">Email 1</label>
-          <input type="text" id="email1" name="email1" title="email1" style="
-            top: 336px;
-            left: 67px;
-            width: 295px;
-            ">
-          <label for="email2" style="
-            top: 336px;
-            left: 363px;
-            ">Email 2</label>
-          <input type="text" id="email2" name="email2" title="email2" style="
-            top: 336px;
-            left: 429px;
-            width: 280px;
-            ">
-          <label for="parentphoneno" style="
-            top: 369px;
-            ">Parent no:</label>
-          <input type="text" id="parentphoneno" name="parentphoneno" title="parentphoneno" style="
-            top: 369px;
-            left: 109px;
-            width: 602px;
-            ">
-          <label for="currentcity" style="
-            top: 400px;
-            ">Current City:</label>
-          <input type="text" id="currentcity" name="currentcity" title="currentcity" style="
-            top: 400px;
-            left: 83px;
-            width: 628px;
-            ">
-          <label for="currentstate" style="
-            top: 430px;
-            ">Current State:</label>
-          <input type="text" id="currentstate" name="currentstate" title="currentstate" style="
-            top: 430px;
-            left: 94px;
-            width: 618px;
-            ">
+      <h4 style="top:192px;">PERSONAL DETAILS</h4>
 
+      <div style="position:absolute;top:242px;left:6%;height:200px;width:90%;">
 
-            <label for="signature" style="top:600px;font-size:20px;" >Student Signature</label>
-            <label for="signature" style="top:600px;font-size:20px;left:620px;" >Date</label>
+        <label for="fristname" style="top:13px;">First Name :</label>
+        <input type="text" id="fristname" name="fristname" title="fristname" style="top:13px;left:74px;width:258px;">
+
+        <label for="middlename" style="top:13px;left:366px;">Middle Name :</label>
+        <input type="text" id="middlename" name="middlename" title="middlename" style="top:13px;left:456px;width:244px;">
+
+        <label for="lastname" style="top: 43px;left: 0;">Last Name :</label>
+        <input type="text" id="lastname" name="lastname" title="lastname" style="top:43px;left:72px;width:627px;">
+
+        <label for="rollno" style="top:79px;left:0px;">Roll No :</label>
+        <input type="text" id="rollno" name="rollno"  style="top:77px;left:49px;width:650px;">
+
+        <label for="department" style="top:112px;left:0px;">Department :</label>
+        <input type="text" id="department" name="department" title="department" style="top:112px;left:76px;width:623px;">
+
+        <label for="startyear" style="top:144px;">Start year :</label>
+        <input type="text" id="startyear" name="startyear" title="startyear" style="top:144px;left: 62px;width:270px;">
+
+        <label for="endyear" style="top: 144px;left: 365px;">End year :</label>
+        <input type="text" id="endyear" name="endyear" title="endyear" style="top:144px;left:423px;width:276px;">
+
+      </div>
+
+      <div style="position:absolute;top:452px;left:6%;height:400px;width:90%;">
+
+        <label for="address1" style="top:13px;">Address 1 :</label>
+        <input type="text" id="address1" name="address1one" style="top:13px;left:64px;width:635px;">
+        <input type="text" id="address1" name="address1" title="address1" style="top:45px;left:-12px;width:711px;"/>
+
+        <label for="address2" style="top:77px;">Address 2 :</label>
+        <input type="text" id="address2" name="address1one" style="top:77px;left:64px;width:635px;">
+        <input type="text" id="address2" name="address1" style="top:109px;left:-12px;width:711px;"/>
+
+        <label for="pincode" style="top:141px;">Pincode :</label>
+        <input type="text" id="pincode" name="pincode" title="pincode" style="top:141px;left:51px;width:648px;">
+
+        <label for="sociallink1" style="top:173px;">Social link :</label>
+        <input type="text" id="sociallink1" name="sociallink1" title="sociallink1" style="top:173px;left:66px;width:267px;">
+
+        <label for="sociallink2" style="top:173px;left:355px;">Social Link : </label>
+        <input type="text" id="sociallink2" name="sociallink2" title="sociallink2" style="top:173px;left:430px;width:269px;">
+
+        <label for="phoneno1" style="top:205px;">Phone 1 :</label>
+        <input type="text" id="phoneno1" name="phoneno1" title="phoneno1" style="top:205px;left:49px;width:287px;">
+
+        <label for="phoneno2" style="top:205px;left:363px;">Phone 2 :</label>
+        <input type="text" id="phoneno2" name="phoneno2" title="phoneno2" style="top:205px;left:412px;width:287px;">
+
+        <label for="email1" style="top:237px;">Email 1 :</label>
+        <input type="text" id="email1" name="email1" title="email1" style="top:237px;left:48px;width:290px;">
+
+        <label for="email2" style="top:237px;left:363px;">Email 2 :</label>
+        <input type="text" id="email2" name="email2" title="email2" style="top:237px;left:410px;width:289px;">
+
+        <label for="parentphoneno" style="top:269px;">Parent Phone :</label>
+        <input type="text" id="parentphoneno" name="parentphoneno" title="parentphoneno" style="top:269px;left:83px;width:616px;">
+
+        <label for="currentcity" style="top:301px;">Current City :</label>
+        <input type="text" id="currentcity" name="currentcity" title="currentcity" style="top:301px;left:78px;width:621px;">
+
+        <label for="currentstate" style="top:330px;">Current State :</label>
+        <input type="text" id="currentstate" name="currentstate" title="currentstate" style="top:330px;left:81px;width:618px;">
+
+        <label for="signature" style="top:500px;font-size:20px;" >Student Signature</label>
+        <label for="signature" style="top:500px;font-size:20px;left:660px;" >Date</label>
 
         </div>
         </page>
@@ -268,7 +182,21 @@
       <script>
 
      function pdfNow(){
+       //window.print();
+       var header = document.getElementById("registerHeader");
+       var nav = document.getElementById("registerNav");
+       var page = document.getElementById("myform");
+
+       header.style.display = "none";
+       nav.style.display = "none";
+       page.style.left = "0px";
+       page.style.top = "0px";
+
        window.print();
+
+       header.style.display = "block";
+       nav.style.display = "block";
+       centerForm();
      }
 
      function makeImgFocus(){
@@ -294,6 +222,8 @@
         var size = (parentSize - hold.offsetWidth)/2;
 
         hold.style.left = size + "px";
+
+        //window.scrollTo(0, document.body.scrollHeight);
      }
 
 

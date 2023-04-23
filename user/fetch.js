@@ -25,8 +25,10 @@ function makeNameCenter(){
 function resizeSearch(){
 
   var hold = document.getElementById("articleSection1Result");
-  var parentSize = hold.parentElement.offsetHeight;
+  var parentSize = hold.parentElement.parentElement.offsetHeight;
   var size = parentSize - hold.offsetTop - 20 - 150;
+
+  console.log(parentSize);
 
   hold.style.height = size + "px";
 }
@@ -97,3 +99,39 @@ function addStudentDetailResult(dept, year, roll, name){
 for(i=0; i<30; i++){
   addStudentDetailResult("Chemistry", 2010, "CHE/10/07", "Rohit Raj");
 }
+
+
+
+
+class fetchData{
+	
+	sendData(){
+    
+    var dept = document.getElementById("data_dept").value;
+    var year = document.getElementById("data_year").value;
+    var roll = document.getElementById("data_rollno").value;
+    var name = document.getElementById("data_name").value;
+
+    var obj = {"dept" : dept, "year" : year, "roll" : roll, "name" : name};
+    var formData = JSON.stringify(obj);
+
+
+
+    /*
+    for(let [name, value] of formData) {
+      console.log(`${name} = ${value}`); // key1 = value1, then key2 = value2
+    }
+    */
+
+    //console.log(formData);
+
+    
+		var hold = new AJAX("fetch.php", "POST", true, token);
+		hold.init();
+    
+		hold.send("fetchQ="+btoa(formData), function(arg){
+        console.log(arg);
+		});
+	};
+	
+};
