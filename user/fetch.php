@@ -79,12 +79,22 @@
                         else{
 
                             //$responses = &$this->getResponse(mysqli_fetch_array($result), $obj);
+                            $data = array();
+                            $i=0;
 
                             while( $responses = mysqli_fetch_array($result) ){
-                                for($i=0; $i<count($responses)/2; $i++){
-                                    echo $responses[$i]."<br>";
-                                }
+
+                                $temp = array();
+
+                                $temp['dept'] = $responses['dept'];
+                                $temp['sYear'] = $responses['sYear'];
+                                $temp['rollno'] = $responses['rollno'];
+                                $temp['fname'] = $responses['fname'];
+
+                                $data[$i++] = $temp;
                             }                            
+
+                            echo base64_encode(json_encode($data));
 
                             return true;
                         }
@@ -106,10 +116,6 @@
 
             $cmd = "SELECT dept, sYear, rollno, fname FROM $this->credTable WHERE ";
 
-
-            //$cmd = "SELECT dept, sYear, rollno, fname  FROM $this->credTable; ";
-
-
             foreach( $obj as $key => $value ){
 
                 if( $key == 'dept' && $value!="" ){
@@ -129,19 +135,13 @@
             $cmd = substr(trim($cmd), 0, -3);
             $cmd .= " ;";
 
-            echo $cmd;
             return $cmd;
-        }
-
-        private function &getResponse($result, $obj){
-            return $result;
         }
 
     };
 
-    //if( isset($_POST['fetchQ']) ){
+    if( isset($_POST['fetchQ']) ){
         $fetch = new fetchData();
         $fetch->fetch();
-        //$fetch->getQuery(json_decode(base64_decode($_POST['fetchQ'])));
-    //}
+    }
 ?>

@@ -96,9 +96,9 @@ function addStudentDetailResult(dept, year, roll, name){
 
 
 
-for(i=0; i<30; i++){
-  addStudentDetailResult("Chemistry", 2010, "CHE/10/07", "Rohit Raj");
-}
+//for(i=0; i<30; i++){
+  //addStudentDetailResult("Chemistry", 2010, "CHE/10/07", "Rohit Raj");
+//}
 
 
 
@@ -130,7 +130,14 @@ class fetchData{
 		hold.init();
     
 		hold.send("fetchQ="+btoa(formData), function(arg){
-        console.log(arg);
+
+      var obj = JSON.parse(atob(arg));
+
+      obj.forEach((val) => {
+
+        addStudentDetailResult(val['dept'], val['sYear'], val['rollno'], val['fname']);
+      } );
+
 		});
 	};
 	
