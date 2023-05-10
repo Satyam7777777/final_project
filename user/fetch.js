@@ -62,6 +62,8 @@ function addStudentDetailResult(dept, year, roll, name){
     var rollTag = document.createElement("div");
     var nameTag = document.createElement("div");
     var detailTag = document.createElement("div");
+	
+	var selector = document.createElement("input");
 
     studentDetailTag.className = "StudentDetails";
 
@@ -70,6 +72,9 @@ function addStudentDetailResult(dept, year, roll, name){
     rollTag.className = "StudentRoll";
     nameTag.className = "StudentName";
     detailTag.className = "Detail";
+	
+	selector.className = "StudentSelector";
+	selector.type = "Checkbox";
 
     deptTag.innerHTML = dept;
     yearTag.innerHTML = year;
@@ -79,7 +84,7 @@ function addStudentDetailResult(dept, year, roll, name){
 
 
       var parentSize = parent.offsetWidth;
-      var size = parentSize - nameTag.offsetLeft - 90;
+      var size = parentSize - nameTag.offsetLeft - 90 - 140;
 
       nameTag.style.width = size + "px";
 
@@ -89,6 +94,8 @@ function addStudentDetailResult(dept, year, roll, name){
     studentDetailTag.append(rollTag);
     studentDetailTag.append(nameTag);
     studentDetailTag.append(detailTag);
+	
+	studentDetailTag.append(selector);
 
 
     parent.appendChild(studentDetailTag);
@@ -96,9 +103,21 @@ function addStudentDetailResult(dept, year, roll, name){
 
 
 
-//for(i=0; i<30; i++){
-  //addStudentDetailResult("Chemistry", 2010, "CHE/10/07", "Rohit Raj");
-//}
+for(i=0; i<30; i++){
+  addStudentDetailResult("Chemistry", 2010, "CHE/10/07", "Rohit Raj");
+}
+
+
+
+
+function clearFetchArea(){
+	
+	var parent = document.getElementById("articleSection1Result");
+	
+	while(  parent.firstChild ){
+		parent.removeChild(parent.lastChild);
+	}
+}
 
 
 
@@ -124,7 +143,7 @@ class fetchData{
     */
 
     //console.log(formData);
-
+	//alert("Working");
     
 		var hold = new AJAX("fetch.php", "POST", true, token);
 		hold.init();

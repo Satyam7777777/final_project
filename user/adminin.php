@@ -87,7 +87,7 @@
             <input type="number" name="data_rollno" id="data_rollno" placeholder="Roll No." />
 
             <input type="text" name="data_name" id="data_name" placeholder="Name" />
-            <button id="data_button">Search</button>
+            <button id="data_button" onclick="fetch()">Search</button>
 
           </div>
 
@@ -179,6 +179,13 @@
   </script>
   
   <script src="fetch.js"></script>
+  <script>
+    function fetch(){
+		clearFetchArea();
+		var f = new fetchData;
+		f.sendData();
+    }
+  </script>
 </html>
 
 
