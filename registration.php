@@ -15,14 +15,10 @@
 
     function recvFile(){
 
-        /* Get the name of the uploaded file */
         $file = $_FILES['file'];
         $extension = getFileType($file);
         $name = bin2hex(random_bytes(16)).'.'.$extension;
-
-        /* Choose where to save the uploaded file */
         $location = "upload/".$name;
-        
             
         if( !validImage($extension) || $file['size'] > 2097152 ){
             http_response_code(608);

@@ -88,6 +88,7 @@
 
             <input type="text" name="data_name" id="data_name" placeholder="Name" />
             <button id="data_button" onclick="fetch()">Search</button>
+			<button id="download_button" onclick="getXLSN()">Download</button>
 
           </div>
 
@@ -99,7 +100,7 @@
 
       </section>
 
-      <section id="articleSection2" style="display:none;">
+      <section id="articleSection2" style="">
 
         <div id="groupAside">
 
@@ -137,7 +138,7 @@
 
       </section>
 
-      <section id="articleSection3" style="background:red"></section>
+      <section id="articleSection3" style="background:red;"></section>
 
     </article>
 	
