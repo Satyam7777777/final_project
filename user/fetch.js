@@ -110,9 +110,9 @@ function addStudentDetailResult(dept, year, roll, name){
 
 
 
-for(i=0; i<30; i++){
-  addStudentDetailResult("Chemistry", 2010, "CHE/10/07", "Rohit Raj");
-}
+// for(i=0; i<30; i++){
+  // addStudentDetailResult("Chemistry", 2010, "CHE/10/07", "Rohit Raj");
+// }
 
 
 
@@ -185,7 +185,22 @@ function clearRollNo(){
 
 
 function getXLSN(){
+	
+	var dataArray = new Array();
+	
 	for(item of holdUniqueRoll.values()){
-		console.log(item);
+		//console.log(item);
+		dataArray.push(item);
 	}
+	
+	dataArray = JSON.stringify(dataArray);
+	
+	var hold = new AJAX("fetchXLSX.php", "POST", true, token);
+	hold.init();
+	
+	hold.send("requestItem="+btoa(dataArray), function(arg){
+		console.log(arg);
+	});
+	
+	window.location = "fetchXLSX.php";
 }

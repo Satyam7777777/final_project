@@ -7,6 +7,8 @@
 
     define("userCred", "usercred");
 	define("adminCred", "admincred");
+	define("userAdres", "useraddress");
+   
    
    
     abstract class DBConnection {
