@@ -46,6 +46,7 @@
                     try{
 
                         $result = $con->query($cmd);
+												
                         
                         if( !$result ){
                             throw new Exception("Error : Unable to retrieve data from database");
@@ -56,26 +57,29 @@
                             $data = array();
                             $i=0;
 							
-							$head = array();
+							$head = ['Roll No.', 'Name', 'Department', 'Batch', 'Pincode', 'Address Line 1', 'Address Line 2', 'Social Link 1', 'Social Link 2', 'Email', 'Alternate Email', 'Phone', 'Alternate Phone', 'Parent Phone', 'City', 'Current State'];
 							
-							$head['rollno'] = 
-							
+							$data[$i++] = $head;
 							
 							
 
                             while( $responses = mysqli_fetch_array($result) ){
-
-                                // $temp = array();
-
-                                // $temp['dept'] = $responses['dept'];
-                                // $temp['sYear'] = $responses['sYear'];
-                                // $temp['rollno'] = $responses['rollno'];
-                                // $temp['fname'] = $responses['fname'];
-
-                                // $data[$i++] = $temp;
 								
+								$name = $responses['fname'].' ';
+								if( $responses['mname'] == "" ){
+									$name .= $responses['lname'];
+								}
+								else{
+									$name .= $responses['mname'].' '.$responses['lname'];
+								}
+								
+								$temp = [ $responses['rollno'], $name, $responses['dept'], $responses['sYear'].'-'.$responses['eYear'], $responses['pincode'], $responses['addressline1'], $responses['addressline2'], $responses['sociallink1'], $responses['sociallink2'], $responses['email'], $responses['email2'], $responses['phone1'], $responses['phon2'], $responses['parentphone'], $responses['city'], $responses['curstate'] ];
+								
+								$data[$i++] = $temp;
                             }                            
-
+							
+							echo "Size :".$i;
+							
                             return $data;
                         }
                     }
