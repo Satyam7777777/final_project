@@ -53,7 +53,7 @@
         top: 100px;
         width: max-content;
       }
-      input{
+      page input{
         position:absolute;
         top: 100px;
         border: none;
@@ -61,6 +61,86 @@
         outline:none;
         margin-left:14px;
       }
+
+      #SubmitSection{
+        height:60px;
+        width:100%;
+        background: rgb(32,44,70);
+        position: absolute;
+      }
+
+
+      #verifyWindow{
+        position:fixed;
+        background: rgb(32,44,70);
+        height:480px;
+        width:580px;
+        left:200px;
+        box-shadow: 0px 0px 400px 100px grey;
+        display: none;
+      }
+
+      #verifyWindowIcon{
+        background-image:url('img/email.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size:cover;
+        height:100px;
+        width:100px;
+        position:absolute;
+        top:60px;
+        left:240px;
+        animation: shake 1.5s infinite ease-in-out;
+      }
+
+      @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+      }
+
+      #verifyWindow form{
+        position:absolute;
+        height:80px;
+        width:380px;
+        top:280px;
+        left:110px;
+      }
+
+
+      #verifyWindow form input{
+        width: 70px;
+		    height: 80px;
+    		background-color: lighten($BaseBG, 5%);
+    		border: none;
+    		line-height: 50px;
+    		text-align: center;
+    		font-size: 44px;
+    		font-family: 'Raleway', sans-serif;
+    		font-weight: 200;
+    		color: rgba(32,44,170,0.8);
+    		margin-right:20px;
+        position:relative;
+      }
+
+      #verifyWindow button {
+        height:40px;
+        color:rgba(32,44,170,0.8);
+        font-weight: bolder;
+        position:absolute;
+        bottom:20px;
+        right:20px;
+        border-radius: 6px;
+      }
+
     </style>
   </head>
   <body id="main">
@@ -73,9 +153,6 @@
          <h3 style="color:rgb(121,119,120);">NIT Arunachal Pradesh</h3>
        </div>
 
-      
-       <button onclick="register()">Register</button>
-
     </header>
 
    <nav id="registerNav">
@@ -86,8 +163,6 @@
      <img src="img/setting.png" height=30 id="setting" />
 
    </nav>
-
-    <button onclick="pdfNow()" style="position:absolute;top:225px;">Print</button>
 
     <page size="A4" id="myform">
       <div id="mainHead">
@@ -180,7 +255,32 @@
         <label for="Date" style="top:500px;font-size:20px;left:660px;" >Date</label>
 
         </div>
+
         </page>
+
+        <div id="SubmitSection">
+          <button style="position:absolute;top:10px;right:10px;height:40px;" onclick="hideShowOTPWINDOW(true);">Verify</button>
+        </div>
+
+        <div id="verifyWindow">
+
+          <div id="verifyWindowIcon"></div>
+          <div style="position:absolute;top:200px;text-align:center;width:100%;color:yellow;line-height:26px;font-size:20px;">
+            <span style="font-size:20px;color:#fff;">A four digit OTP is sent to your email ! Please Verify</span>
+            <br/>Valid for <span id="verifyWindowCountdown" style="color:red">120</span> Sec
+          </div>
+
+          <form>
+            <input type="text" id="digit-1" name="digit-1" data-next="digit-2" onkeyup="focusOTPInput(2)" onclick="focusOTPInput(1)" />
+	          <input type="text" id="digit-2" name="digit-2" data-next="digit-3" onkeyup="focusOTPInput(3)" data-previous="digit-1" />
+	          <input type="text" id="digit-3" name="digit-3" data-next="digit-4" onkeyup="focusOTPInput(4)" data-previous="digit-2" />
+	          <input type="text" id="digit-4" name="digit-4" data-next="digit-5" onkeyup="focusOTPInput(5)" data-previous="digit-3" />
+          </form>
+
+          <button style="right:140px;" id="resendButton" onclick="clearOTP()">ReSend OTP</button>
+          <button onclick="submitForm()">Submit & Print</button>
+          <button onclick="cancleOTP()" style="left:20px;width:70px;">Cancle</button>
+        </div>
 
       </body>
       <script>
@@ -190,9 +290,14 @@
        var header = document.getElementById("registerHeader");
        var nav = document.getElementById("registerNav");
        var page = document.getElementById("myform");
+       var SubmitSection = document.getElementById("SubmitSection");
+       var verifyWindow = document.getElementById("verifyWindow");
 
        header.style.display = "none";
        nav.style.display = "none";
+       SubmitSection.style.display = "none";
+       verifyWindow.style.display = "none";
+
        page.style.left = "0px";
        page.style.top = "0px";
 
@@ -200,6 +305,8 @@
 
        header.style.display = "block";
        nav.style.display = "block";
+       SubmitSection.style.display = "block";
+       verifyWindow.style.visibility = "block";
        centerForm();
      }
 
@@ -220,14 +327,28 @@
        reader.readAsDataURL(img.files[0]);
      }
 
+     function centerVerifyWindow(){
+       var verifyWindow = document.getElementById("verifyWindow");
+       verifyWindow.style.top =  ((window.innerHeight - verifyWindow.offsetHeight)/2) + "px";
+       verifyWindow.style.left =  ((window.innerWidth - verifyWindow.offsetWidth)/2) + "px";
+     }
+
+
      function centerForm(){
         var hold = document.getElementById("myform");
         var parentSize = hold.parentElement.offsetWidth;
         var size = (parentSize - hold.offsetWidth)/2;
-
+        hold.style.top = 230 + "px";
         hold.style.left = size + "px";
 
-        //window.scrollTo(0, document.body.scrollHeight);
+        window.scrollTo(0, document.body.scrollHeight);
+
+        var SubmitSection = document.getElementById("SubmitSection");
+        SubmitSection.style.top = (hold.offsetTop + hold.offsetHeight) + "px";
+        SubmitSection.style.width = (hold.offsetWidth) + "px";
+        SubmitSection.style.left = size + "px";
+
+        centerVerifyWindow();
      }
 
 
