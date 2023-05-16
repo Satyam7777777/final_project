@@ -58,12 +58,15 @@ function register(){
     var mname = document.getElementById("middlename").value;
     var lname = document.getElementById("lastname").value;
     var rollno = document.getElementById("rollno").value;
-    var department= document.getElementById("department").value;
+    var department = document.getElementById("department").value;
+
+    var degree = document.getElementById("degree").value;
+
     var syear = document.getElementById("startyear").value;
     var eyear = document.getElementById("endyear").value;
 
-    var address1 = document.getElementById("address1").value + document.getElementById("address12").value;
-    var address2 = document.getElementById("address2").value + document.getElementById("address22").value;
+    var address1 = document.getElementById("address1").value + " " + document.getElementById("address12").value;
+    var address2 = document.getElementById("address2").value + " " + document.getElementById("address22").value;
     var pincode = document.getElementById("pincode").value;
     var sociallink1 = document.getElementById("sociallink1").value;
     var sociallink2 = document.getElementById("sociallink2").value;
@@ -75,11 +78,15 @@ function register(){
     var currentcity = document.getElementById("currentcity").value;
     var currentstate = document.getElementById("currentstate").value;
 
+    var employment1 = document.getElementById("employment1").value;
+    var employment2 = document.getElementById("employment2").value;
+    var employment = employment1 + " " + employment2;
+
     token = "ddsdfsef";
 
     var obj = {"fname" : fname, "mname" : mname, "lname" : lname, "rollno" : rollno, "department" : department, "syear" : syear, "eyear" : eyear,
             "address1" : address1, "address2" : address2, "pincode" : pincode, "sociallink1" : sociallink1, "sociallink2" : sociallink2,
-            "phoneno1" : phoneno1, "phoneno2" : phoneno2, "email1" : email1, "email2" : email2, "parentphoneno" : parentphoneno, "currentcity" : currentcity, "currentstate" : currentcity };
+            "phoneno1" : phoneno1, "phoneno2" : phoneno2, "email1" : email1, "email2" : email2, "parentphoneno" : parentphoneno, "currentcity" : currentcity, "currentstate" : currentstate, "degree" : degree, "employment" : employment };
 
     var formData = btoa(JSON.stringify(obj));
 

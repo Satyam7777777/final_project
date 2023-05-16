@@ -166,10 +166,7 @@
 
     <page size="A4" id="myform">
       <div id="mainHead">
-        <img src="img/logo.png" height=100 alt=""
-          style="position:absolute;top:40px;left:40px;" />NATIONAL INSTITUTE OF
-        TECHNOLOGY<br/>ARUNACHAL PRADESH, JOTE, PIN-791113<br/>(Established by
-            MHRD, Govt. of India)
+        <img src="img/logo.png" height=100 alt="" style="position:absolute;top:40px;left:40px;" />NATIONAL INSTITUTE OF TECHNOLOGY<br/>ARUNACHAL PRADESH, JOTE, PIN-791113<br/>(Established by MHRD, Govt. of India)
             <img src="img/user.png" onclick="makeImgFocus()" id="user"
               height=100 width=100
               style="position:absolute;top:40px;right:40px;border:1px solid
@@ -201,7 +198,26 @@
         <input type="text" id="rollno" name="rollno"  style="top:77px;left:49px;width:650px;">
 
         <label for="department" style="top:112px;left:0px;">Department :</label>
-        <input type="text" id="department" name="department" title="department" style="top:112px;left:76px;width:623px;">
+        <input type="text" id="department" list="depttypes" name="department" title="department" style="top:112px;left:76px;width:256px;">
+        <datalist id="depttypes">
+          <option>Computer Science & Engineering</option>
+          <option>Civil Engineering</option>
+          <option>Biotech Engineering</option>
+          <option>Chemical Engineering</option>
+          <option>Mechenical Engineering</option>
+          <option>Electrical Engineering</option>
+          <option>Electronics & Communication Engineering</option>
+        </datalist>
+
+        <label for="degree" style="top:112px;left:365px;">Degree :</label>
+        <input type="text" id="degree" list="degreetypes" name="department" title="degree" style="top:112px;left:410px;width:289px;">
+          <datalist id="degreetypes">
+            <option>BTech</option>
+            <option>MTech</option>
+            <option>PHD</option>
+            <option>MBA</option>
+            <option>MS</option>
+          </datalist>
 
         <label for="startyear" style="top:144px;">Start year :</label>
         <input type="text" id="startyear" name="startyear" title="startyear" style="top:144px;left: 62px;width:270px;">
@@ -236,10 +252,10 @@
         <label for="phoneno2" style="top:205px;left:363px;">Phone 2 :</label>
         <input type="text" id="phoneno2" name="phoneno2" title="phoneno2" style="top:205px;left:412px;width:287px;">
 
-        <label for="email1" style="top:237px;">Email 1 :</label>
-        <input type="text" id="email1" name="email1" title="email1" style="top:237px;left:48px;width:290px;">
+        <label for="email1" style="top:237px;">Personal Email :</label>
+        <input type="text" id="email1" name="email1" title="email1" style="top:237px;left:94px;width:244px;">
 
-        <label for="email2" style="top:237px;left:363px;">Email 2 :</label>
+        <label for="email2" style="top:237px;left:363px;">Email :</label>
         <input type="text" id="email2" name="email2" title="email2" style="top:237px;left:410px;width:289px;">
 
         <label for="parentphoneno" style="top:269px;">Parent Phone :</label>
@@ -250,6 +266,11 @@
 
         <label for="currentstate" style="top:330px;">Current State :</label>
         <input type="text" id="currentstate" name="currentstate" title="currentstate" style="top:330px;left:81px;width:618px;">
+
+        <label for="employment1" style="top:360px;">Employment Details :</label>
+        <input type="text" id="employment1" name="currentstate" title="currentstate" style="top:360px;left:131px;width:568px;">
+        <input type="text" id="employment2" name="currentstate" title="currentstate" style="top:390px;left:-12px;width:712px;">
+
 
         <label for="signature" style="top:500px;font-size:20px;" >Student Signature</label>
         <label for="Date" style="top:500px;font-size:20px;left:660px;" >Date</label>
@@ -333,7 +354,6 @@
        verifyWindow.style.left =  ((window.innerWidth - verifyWindow.offsetWidth)/2) + "px";
      }
 
-
      function centerForm(){
         var hold = document.getElementById("myform");
         var parentSize = hold.parentElement.offsetWidth;
@@ -342,6 +362,7 @@
         hold.style.left = size + "px";
 
         window.scrollTo(0, document.body.scrollHeight);
+
 
         var SubmitSection = document.getElementById("SubmitSection");
         SubmitSection.style.top = (hold.offsetTop + hold.offsetHeight) + "px";
