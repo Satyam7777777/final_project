@@ -80,6 +80,15 @@
               <option value="bio">Biotechnology</option>
             </select>
 
+            <select name="data_degree" id="data_degree">
+              <option value="">Degree</option>
+              <option value="BTech">BTech</option>
+              <option value="MTech">MTech</option>
+              <option value="PHD">PHD</option>
+              <option value="MBA">MBA</option>
+              <option value="MS">MS</option>
+            </select>
+
             <select name="data_year" id="data_year">
               <option value="">Year</option>
             </select>

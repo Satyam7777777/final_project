@@ -45,6 +45,7 @@ function studentNames(){
 
 
 
+
 populateYear();
 makeNameCenter();
 resizeSearch();
@@ -139,8 +140,9 @@ class fetchData{
 		var year = document.getElementById("data_year").value;
 		var roll = document.getElementById("data_rollno").value;
 		var name = document.getElementById("data_name").value;
+    var degree = document.getElementById("data_degree").value;
 
-		var obj = {"dept" : dept, "year" : year, "roll" : roll, "name" : name};
+		var obj = {"dept" : dept, "year" : year, "roll" : roll, "name" : name, "degree" : degree};
 		var formData = JSON.stringify(obj);
 
 
@@ -185,22 +187,22 @@ function clearRollNo(){
 
 
 function getXLSN(){
-	
+
 	var dataArray = new Array();
-	
+
 	for(item of holdUniqueRoll.values()){
 		//console.log(item);
 		dataArray.push(item);
 	}
-	
+
 	dataArray = JSON.stringify(dataArray);
-	
+
 	var hold = new AJAX("fetchXLSX.php", "POST", true, token);
 	hold.init();
-	
+
 	hold.send("requestItem="+btoa(dataArray), function(arg){
 		console.log(arg);
 	});
-	
+
 	window.location = "fetchXLSX.php";
 }

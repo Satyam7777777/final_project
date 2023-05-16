@@ -18,9 +18,20 @@
   text-align: center;
 }
 
+#articleSection1 #articleSection1Search #data_degree{
+  height:40px;
+  width:80px;
+  margin-top:10px;
+  border-radius:10px;
+  margin-left:5px;
+  font-size:14px;
+  text-align: center;
+}
+
+
 #articleSection1 #articleSection1Search #data_year{
   height:40px;
-  width:60px;
+  width:90px;
   margin-top:10px;
   border-radius:10px;
   margin-left:5px;
@@ -30,7 +41,7 @@
 
 #articleSection1 #articleSection1Search #data_rollno{
   height:40px;
-  width:60px;
+  width:70px;
   margin-top:10px;
   border-radius:10px;
   margin-left:5px;

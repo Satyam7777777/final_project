@@ -130,6 +130,9 @@
                 else if( $key == "name" && $value!="" ){
                     $cmd .= "fname LIKE '%".$value."%' AND ";
                 }
+                else if( $key == "degree" && $value!="" ){
+                    $cmd .= "degree LIKE '%".$value."%' AND ";
+                }
             }
 
             $cmd = substr(trim($cmd), 0, -3);
