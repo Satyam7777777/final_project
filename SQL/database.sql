@@ -35,7 +35,7 @@ CREATE TABLE usercred (
 	lname 	VARCHAR(20) NOT NULL,
 	
 	dept 	VARCHAR(8) NOT NULL,
-	course 	VARCHAR(8) NOT NULL,
+	degree  VARCHAR(8) NOT NULL,
 	sYear 	INT NOT NULL,
 	eYear 	INT NOT NULL,
 	profile VARCHAR(37)
@@ -55,5 +55,6 @@ CREATE TABLE useraddress (
 	phone2 			VARCHAR(12),
 	parentphone 	VARCHAR(12),
 	city 			VARCHAR(20),
-	curstate 		VARCHAR(20)
+	curstate 		VARCHAR(20),
+	employedetail   VARCHAR(300)
 );

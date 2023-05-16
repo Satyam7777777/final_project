@@ -9,7 +9,10 @@ async function uploadFile(fileupload) {
       body: formData
     });
 
-    // resCode['status']
+    //console.log( resCode['status'] );
+    console.log(resCode);
+
+    uploadData();
 }
 
 
@@ -51,9 +54,11 @@ function register(){
     else{
         uploadFile(fileImage);
     }
+}
 
 
-
+function uploadData(){
+  
     var fname = document.getElementById("firstname").value;
     var mname = document.getElementById("middlename").value;
     var lname = document.getElementById("lastname").value;
@@ -92,12 +97,13 @@ function register(){
 
 
     var hold = new AJAX("registration.php", "POST", true, token);
-		hold.init();
+    hold.init();
 
-	hold.send("registration="+formData, function(arg){
+  hold.send("registration="+formData, function(arg){
         console.log(arg);
-	});
+  });
 }
+
 
 
 // verifyWindow SubmitSection
